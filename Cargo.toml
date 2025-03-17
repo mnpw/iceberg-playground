@@ -1,0 +1,24 @@
+[package]
+name = "iceberg-playground"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = "*"
+iceberg = { "git" = "https://github.com/apache/iceberg-rust" }
+iceberg-catalog-rest = { "git" = "https://github.com/apache/iceberg-rust" }
+# if you want to write parquet files then this needs to be loaded
+arrow = "54.2.1"
+arrow-schema = "54.2.1"
+chrono = "=0.4.39"
+serde_json = "*"
+flume = "0.11.1"
+rand = "0.9.0"
+
+[[bin]]
+name = "decouple"
+path = "src/bin/decouple.rs"
+
+[[bin]]
+name = "deletes"
+path = "src/bin/deletes.rs"
