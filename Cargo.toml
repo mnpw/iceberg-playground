@@ -8,12 +8,25 @@ tokio = "*"
 iceberg = { "git" = "https://github.com/apache/iceberg-rust" }
 iceberg-catalog-rest = { "git" = "https://github.com/apache/iceberg-rust" }
 # if you want to write parquet files then this needs to be loaded
-arrow = "54.2.1"
+arrow = { version = "54.2.1", features = ["prettyprint"] }
 arrow-schema = "54.2.1"
 chrono = "=0.4.39"
 serde_json = "*"
 flume = "0.11.1"
 rand = "0.9.0"
+rdkafka = { package = "madsim-rdkafka", version = "0.4.1", features = [
+    "cmake-build",
+] }
+serde = "*"
+futures = "0.3"
+reqwest = { version = "0.12.2", default-features = false, features = ["json"] }
+anyhow = "1.0.97"
+uuid = "1.16.0"
+
+
+[[bin]]
+name = "main"
+path = "main.rs"
 
 [[bin]]
 name = "decouple"
@@ -22,3 +35,21 @@ path = "src/bin/decouple.rs"
 [[bin]]
 name = "deletes"
 path = "src/bin/deletes.rs"
+
+[[bin]]
+name = "kafka-bench"
+path = "src/bin/kafka-bench.rs"
+
+
+[[bin]]
+name = "dict-array"
+path = "src/bin/dict_array.rs"
+
+
+[[bin]]
+name = "bench-kafka"
+path = "src/bin/bench-kafka.rs"
+
+[[bin]]
+name = "conflict"
+path = "src/bin/concurrent_writes.rs"
